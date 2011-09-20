@@ -18,6 +18,9 @@
     "bundler": "1.0.18"
   },
   "repository": "git: //github.com/reedlaw/chef-tutorial.git",
+  "revision": {
+    "_default": "0.0.1"
+  },
   "deploy_to": "/srv/rails_demo",
   "deploy_key": "",
   "owner": "nobody",
