@@ -1,31 +1,31 @@
 {
-  "id": "rails_demo",
-  "server_roles": [
-    "rails_demo"
-  ],
-  "type": {
-    "rails_demo": [
-      "rails",
-      "unicorn"
-    ]
-  },
-  "packages": {
-    "libxml2-dev": "",
-    "libxslt1-dev": "",
-    "libsqlite3-dev": ""
-  },
-  "gems": {
-    "bundler": "1.0.18",
-  },
-  "repository": "git://github.com/reedlaw/chef-tutorial.git",
-  "deploy_to": "/srv/rails_demo",
-  "deploy_key": "",
-  "owner": "nobody",
-  "group": "nogroup",
-  "force": {
-    "_default": false
-  },
-  "migrate": {
-    "_default": true
-  }
+  "id": "rails_demo",
+  "server_roles": [
+    "rails_demo"
+  ],
+  "type": {
+    "rails_demo": [
+      "rails",
+      "unicorn"
+    ]
+  },
+  "packages": {
+    "libxml2-dev": "",
+    "libxslt1-dev": "",
+    "libsqlite3-dev": ""
+  },
+  "gems": {
+    "bundler": "1.0.18"
+  },
+  "repository": "git: //github.com/reedlaw/chef-tutorial.git",
+  "deploy_to": "/srv/rails_demo",
+  "deploy_key": "",
+  "owner": "nobody",
+  "group": "nogroup",
+  "force": {
+    "_default": false
+  },
+  "migrate": {
+    "_default": true
+  }
 }
