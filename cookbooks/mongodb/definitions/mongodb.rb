@@ -48,7 +48,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
   end
   
   if !["mongod", "shard", "configserver", "mongos"].include?(type)
-    raise "Unknown mongodb typ '#{type}'"
+    raise "Unknown mongodb type '#{type}'"
   end
   
   if type != "mongos"
@@ -60,7 +60,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
     daemon = "/usr/bin/mongos"
     configfile = nil
     dbpath = nil
-    configserver = configserver_nodes.collect{|n| "#{n['ipaddress']}:#{n['mongodb']['port']}" }.join(",")
+    configserver = configserver_nodes.collect{|n| "#{n['fqdn']}:#{n['mongodb']['port']}" }.join(",")
   end
   
   # default file
@@ -134,7 +134,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
   if !replicaset_name.nil?
     rs_nodes = search(
       :node,
-      "role:#{replicaset['mongodb']['cluster_role_prefix']}* AND \
+      "mongodb_cluster_name:#{replicaset['mongodb']['cluster_name']} AND \
        recipes:mongodb\\:\\:replicaset AND \
        mongodb_shard_name:#{replicaset['mongodb']['shard_name']} AND \
        chef_environment:#{replicaset.chef_environment}"
@@ -157,7 +157,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
     
     shard_nodes = search(
       :node,
-      "role:#{node['mongodb']['cluster_role_prefix']}* AND \
+      "mongodb_cluster_name:#{node['mongodb']['cluster_name']} AND \
        recipes:mongodb\\:\\:shard AND \
        chef_environment:#{node.chef_environment}"
     )
