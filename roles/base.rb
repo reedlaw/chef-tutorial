@@ -4,8 +4,7 @@ run_list(
   "recipe[users::sysadmins]",
   "recipe[sudo]",
   "recipe[apt]",
-  "recipe[git]",
-  "recipe[build-essential]"
+  "recipe[git]"
 )
 override_attributes(
   :authorization => {
