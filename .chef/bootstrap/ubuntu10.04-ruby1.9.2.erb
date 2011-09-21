@@ -11,12 +11,6 @@ if [ ! -f /usr/local/bin/chef-client ]; then
   sudo make install
   sudo gem update --system
 
-  (
-  cat <<'EOP'
-  gem: --no-ri --no-rdoc
-  EOP
-  ) > /etc/gemrc
-
   gem update
   gem install ohai --no-rdoc --no-ri --verbose
   gem install chef --no-rdoc --no-ri --verbose <%= bootstrap_version_string %>
