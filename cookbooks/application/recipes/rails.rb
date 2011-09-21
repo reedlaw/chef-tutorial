@@ -177,40 +177,6 @@ deploy_revision app['id'] do
         ignore_failure true
         cwd release_path
       end
-
-    elsif node.chef_environment && app['databases'].has_key?(node.chef_environment)
-      # chef runs before_migrate, then symlink_before_migrate symlinks, then migrations,
-      # yet our before_migrate needs database.yml to exist (and must complete before
-      # migrations).
-      #
-      # maybe worth doing run_symlinks_before_migrate before before_migrate callbacks,
-      # or an add'l callback.
-      execute "(ln -s ../../../shared/database.yml config/database.yml && rake gems:install); rm config/database.yml" do
-        ignore_failure true
-        cwd release_path
-      end
-    end
-  end
-
-  symlink_before_migrate({
-    "database.yml" => "config/database.yml",
-    "memcached.yml" => "config/memcached.yml"
-  })
-
-  if app['migrate'][node.chef_environment] && node[:apps][app['id']][node.chef_environment][:run_migrations]
-    migrate true
-    migration_command app['migration_command'] || "rake db:migrate"
-  else
-    migrate false
-  end
-  before_symlink do
-    ruby_block "remove_run_migrations" do
-      block do
-        if node.role?("#{app['id']}_run_migrations")
-          Chef::Log.info("Migrations were run, removing role[#{app['id']}_run_migrations]")
-          node.run_list.remove("role[#{app['id']}_run_migrations]")
-        end
-      end
     end
   end
 end
