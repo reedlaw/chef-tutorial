@@ -1,0 +1,38 @@
+{
+  "name": "rails_demo",
+  "description": "Installs rails_demo from Git repository",
+  "long_description": "Description\n===========\n\nInstalls Rails_Demo\n\n\n",
+  "maintainer": "Opscode, Inc.",
+  "maintainer_email": "cookbooks@opscode.com",
+  "license": "Apache 2.0",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "dependencies": {
+    "git": ">= 0.0.0",
+    "sqlite": ">= 0.0.0",
+    "apache2": ">= 0.0.0",
+    "mysql": ">= 0.0.0",
+    "passenger_apache2": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "rails_demo": "Installs Rails_Demo CMS",
+    "rails_demo::db_bootstrap": "Bootstrap the Rails_Demo database, used with application cookbook (destructive)"
+  },
+  "version": "1.0.1"
+}
