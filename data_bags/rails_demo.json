@@ -19,7 +19,7 @@
   },
   "repository": "git://github.com/reedlaw/chef-tutorial.git",
   "revision": {
-    "_default": "0.0.2"
+    "_default": "HEAD"
   },
   "deploy_to": "/srv/rails_demo",
   "deploy_key": "",
