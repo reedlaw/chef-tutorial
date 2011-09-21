@@ -4,5 +4,5 @@ run_list(
          "recipe[application]",
          "recipe[mongodb::10gen_repo]",
          "recipe[mongodb]",
-         "recipe[rails_demo]"
+         "recipe[nginx::source]"
 )
