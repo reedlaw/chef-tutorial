@@ -30,6 +30,7 @@ http {
   gzip_http_version <%= node[:nginx][:gzip_http_version] %>;
   gzip_comp_level <%= node[:nginx][:gzip_comp_level] %>;
   gzip_proxied <%= node[:nginx][:gzip_proxied] %>;
+  gzip_disable "MSIE [1-6]\.";
   gzip_types <%= node[:nginx][:gzip_types].join(' ') %>;
   <% end %>
 
@@ -37,4 +38,18 @@ http {
 
   include <%= node[:nginx][:dir] %>/conf.d/*.conf;
   include <%= node[:nginx][:dir] %>/sites-enabled/*;
+}
+
+upstream app_server {
+    # fail_timeout=0 means we always retry an upstream even if it failed
+    # to return a good HTTP response (in case the Unicorn master nukes a
+    # single worker for timing out).
+
+    # for UNIX domain socket setups:
+    server unix:/tmp/unicorn.sock fail_timeout=0;
+
+    # for TCP setups, point these to your backend servers
+    # server 192.168.0.7:8080 fail_timeout=0;
+    # server 192.168.0.8:8080 fail_timeout=0;
+    # server 192.168.0.9:8080 fail_timeout=0;
 }
