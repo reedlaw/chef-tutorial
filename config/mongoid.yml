@@ -9,7 +9,7 @@ test:
 # set these environment variables on your prod server
 production:
   host: localhost
-  port: chef_tutorial
+  database: chef_tutorial
   # slaves:
   #   - host: slave1.local
   #     port: 27018

@@ -163,6 +163,7 @@ deploy_revision app['id'] do
   ssh_wrapper "#{app['deploy_to']}/deploy-ssh-wrapper" if app['deploy_key']
   shallow_clone true
   before_migrate do
+    execute "bundle exec rake assets:precompile"
     if app['gems'].has_key?('bundler')
       link "#{release_path}/vendor/bundle" do
         to "#{app['deploy_to']}/shared/vendor_bundle"
