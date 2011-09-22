@@ -4,7 +4,10 @@
 ##
 
 # What ports/sockets to listen on, and what options for them.
-listen "/tmp/unicorn.sock", :backlog => 64
+# listen "/tmp/.sock", :backlog => 64
+<%- @listen.each do |port, options| %>
+listen <%= port %>, <%= options %>
+<%- end %>
 
 <%- if @working_directory %>
 working_directory '<%= @working_directory %>'
