@@ -1,7 +1,7 @@
 bash -c '
 if [ ! -f /usr/local/bin/chef-client ]; then
   apt-get update
-  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl libssl-dev
+  sudo apt-get install -y build-essential zlib1g zlib1g-dev openssl autoconf bison ruby zlib1g-dev libssl-dev libreadline5-dev libxml2-dev libmagick9-dev ruby1.8-dev libxslt-dev libqt4-dev zip
   cd /tmp
   wget ftp://ftp.ruby-lang.org//pub/ruby/1.9/ruby-1.9.2-p290.tar.gz
   tar xvf ruby-1.9.2-p290.tar.gz
