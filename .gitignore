@@ -5,6 +5,7 @@ tmp/**/*
 .rvmrc
 .sass-cache/
 app/assets/.sass-cache/*
+public/assets/
 *~
 \#*
 .\#*
