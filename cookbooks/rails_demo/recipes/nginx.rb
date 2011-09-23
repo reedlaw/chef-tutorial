@@ -7,8 +7,7 @@ cookbook_file "#{node["nginx"]["dir"]}/sites-available/rails_demo" do
 end
 
 execute "graceful-restart" do
-  command "kill -HUP $( cat /var/run/nginx.pid )"
-  only_if do ::File.exists?("/var/run/nginx.pid"); end
+  command "kill -HUP $( pgrep nginx )"
 end
 
 nginx_site "rails_demo" do
