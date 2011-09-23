@@ -3,5 +3,6 @@ cookbook_file "/etc/nginx/sites-enabled/rails_demo" do
   mode 0644
   owner "root"
   group "root"
-  notifies :restart, resources(:service => "nginx")
+  notifies :restart, "service[nginx]"
 end
+
