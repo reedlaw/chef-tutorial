@@ -77,8 +77,10 @@ directory node[:nginx][:dir] do
 end
 
 unless platform?("centos","redhat","fedora")
-  runit_service "nginx"
-
+  runit_service "nginx" do
+    restart_command "sudo kill -HUP $(pgrep nginx)"
+  end
+  
   service "nginx" do
     subscribes :restart, resources(:bash => "compile_nginx_source")
   end
