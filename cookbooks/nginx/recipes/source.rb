@@ -78,7 +78,7 @@ end
 
 unless platform?("centos","redhat","fedora")
   runit_service "nginx" do
-    restart_command "sudo kill -HUP $(pgrep nginx)"
+    restart_command "hup"
   end
   
   service "nginx" do
